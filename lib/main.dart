@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:untitled46/values.dart';
@@ -54,41 +55,17 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
            Container(
-             color: Colors.green,
-            // margin: EdgeInsets.all(10),
-             width: 150,
-             height: 50,
-             child: Center(
-               child: DropdownButton(
+             width: 400,
+             height: 150,
 
-                    value: "USD",
-                   items: dd_loop(),
-
-
-                      /*
-                        [
-                     DropdownMenuItem(child: Text("USD"),
-                       value: "USD",
-                     ),
-                     DropdownMenuItem(child: Text("Euro"),
-                       value: "Euro",
-                     ),
-                     DropdownMenuItem(child: Text("Pound"),
-                       value: "Pound",
-                     ),
-                     DropdownMenuItem(child: Text("JPY"),
-                       value: "JPY",
-                     ),
-                   ],
-                       */
-
-
-
-                   onChanged: (value)
-               {
-                 print('$value');
-                    }),
-             ),
+             child: CupertinoPicker(
+               itemExtent: 30,
+              backgroundColor: Colors.lime,
+                 onSelectedItemChanged: (selectedIndex)
+                 {
+                   print(currenciesList[selectedIndex]);
+                  },
+                 children: dd_loop(),),
            ),
           ],
         ),
@@ -98,13 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 
-  List <DropdownMenuItem<String>> dd_loop()
+  List <Text> dd_loop()
   {
 
-    List <DropdownMenuItem<String>> lt1 = [];
+    List <Text> lt1 = [];
 
     for( var gf in currenciesList)
-      lt1.add(DropdownMenuItem(child: Text(gf), value: gf));
+      lt1.add(Text(gf));
 
 
 
